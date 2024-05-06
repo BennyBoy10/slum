@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mail($to, $subject, $message, $headers);
 
     // Redirect to a thank you page or display a success message
-    header('Location: https://bit.ly/bulamabenjamin'); // Replace with your thank you page URL
+    header('Location:https://bit.ly/bulamabenjamin'); // Replace with your thank you page URL
     exit;
 } else {
     // Handle invalid form submission
