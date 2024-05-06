@@ -7,17 +7,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
 
-    // Compose email message
-    $subject = 'New Form Submission';
-    $message = "Name: $name\nNickname: $nickname\nBirthday: $birthday\nEmail: $email\nPhone: $phone";
+    // Compose data line for CSV
+    $data = "$name,$nickname,$birthday,$email,$phone\n";
 
-    // Send email
-    $to = 'bulamabenjamin100@gmail.com'; // Replace with your email address
-    $headers = "From: $email\r\n";
-    mail($to, $subject, $message, $headers);
+    // Append data to CSV file
+    $file = fopen('submissions.csv', 'a'); // 'a' for append mode
+    fwrite($file, $data);
+    fclose($file);
 
     // Redirect to a thank you page or display a success message
-    header('Location:https://bit.ly/bulamabenjamin'); // Replace with your thank you page URL
+    header('Location: thank_you.html'); // Replace with your thank you page URL
     exit;
 } else {
     // Handle invalid form submission
