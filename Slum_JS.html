@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slum Book</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    .container {
+        max-width: 300px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
+        width: 95%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+  
+    <div class="container">
+        <h1>Slum Book</h1>
+
+        <form id="slumForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="nickname">Nickname:</label>
+            <input type="text" id="nickname" name="nickname" required>
+
+            <label for="birthday">Birthday:</label>
+            <input type="date" id="birthday" name="birthday" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <input type="button" value="Submit" onclick="sendForm()">
+        </form>
+    </div>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        emailjs.init("user_bulamabenjamin100@gmail.com"); // Replace with your EmailJS email
+
+        function sendForm() {
+            const form = document.getElementById("slumForm");
+            emailjs.sendForm("service_rykkm6q", "template_iod817k", form)
+                .then(function(response) {
+                    alert("Form submitted successfully!");
+                    form.reset();
+                }, function(error) {
+                    alert("Error submitting form. Please try again later.");
+                });
+        }
+    </script>
+</body>
+</html>
